@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{51374BA4-17E2-49A6-D2BF-2622E381708F}</ProjectGuid>
+    <ProjectGuid>{EFA44197-7B60-7BC0-6AE7-8135CF69CB72}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.2D.Animation.Runtime</AssemblyName>
@@ -324,6 +324,9 @@
     </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>C:\Program Files\Unity 2021.2.3f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:\Program Files\Unity 2021.2.3f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity 2021.2.3f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
@@ -736,27 +739,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{B1B812B4-45FE-2089-C66C-BB3EF77CC2D1}</Project>
+      <Project>{4A6599B5-335E-72F7-D696-D7C42C729569}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
-      <Project>{4CD64535-564C-BFCA-9915-48C8D1BFA145}</Project>
+      <Project>{3F075EC8-A4E2-554E-329A-23388EE7A14C}</Project>
       <Name>Unity.InternalAPIEngineBridge.001</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{A7EAE15F-964A-35B1-B031-D51CBF894D83}</Project>
+      <Project>{F2728E73-FB02-A9FB-1FAB-102B825F732C}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{E0C249C4-FEC5-0CE8-B0F5-2D1306992F61}</Project>
+      <Project>{2549EE3B-575B-FED0-8804-F39C3ACA078B}</Project>
       <Name>Unity.Burst</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{40DC45DF-E208-DD3E-DDA8-53A697C26974}</Project>
+      <Project>{0318839A-CE06-07EA-A4CF-B43951505700}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{A846DA0B-D8EE-3A9D-200F-2B8B73D7C6CE}</Project>
+      <Project>{7B41AFB0-873D-18DF-4BB3-9E4DB8B1859C}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>
