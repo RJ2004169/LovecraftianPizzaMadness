@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialDialogueController : MonoBehaviour
 {
     private GameObject managerGO;
     private Animator managerAnimator;
+    private Color fadeScreenColor;
+    private Image fadeScreenImage;
+    
     [SerializeField] private GameObject managerDialogueGO;
     [SerializeField] private GameObject playerDialogueGO;
     [SerializeField] private TMPro.TextMeshProUGUI managerDialogueText;
     [SerializeField] private TMPro.TextMeshProUGUI playerDialogueText;
+    [SerializeField] private GameObject managerNextButton;
+
+    [SerializeField] private GameObject FadeScreenImage;
+    [SerializeField] private GameObject BackgroundImage;
+    [SerializeField] private List<GameObject> IngredientsList;
+
 
     private string[] managerDialogue =
     {
@@ -33,8 +43,18 @@ public class TutorialDialogueController : MonoBehaviour
         "So you don’t end up in that situation!",
         "Anyway, let’s get to it. I'll introduce you to the ingredients",
         "You’ve got today to get this right.",
-        "Tomorrow it’s all on you."
-
+        "Tomorrow it’s all on you.",
+        "You'll see our toppings are Cheese,",
+        "You'll see our toppings are Cheese, Dirty Socks,",
+        "You'll see our toppings are Cheese, Dirty Socks, Pineapple Slices,",
+        "You'll see our toppings are Cheese, Dirty Socks, Pineapple Slices, Fresh Eyeballs,",
+        "Toilet Rolls, pretty straightforward so far eh?",
+        "Toilet Rolls, pretty straightforward so far eh? Now we've got Necrotic Spores, ",
+        "Toilet Rolls, pretty straightforward so far eh? Now we've got Necrotic Spores, Pizza Sauce,",
+        "Assorted Tentacles,",
+        "Assorted Tentacles, our very own Eldritch Pizza Dough,",
+        "Assorted Tentacles, our very own Eldritch Pizza Dough and Live Leeches,",
+        "Chef Josh here is the one who cooks our pizzas, pay attention to how well the each pizza must be cooked.",
     };
 
     private string[] playerDialogue =
@@ -49,9 +69,9 @@ public class TutorialDialogueController : MonoBehaviour
 
     };
 
-    private int dialogueCounter;
-    private int managerDialogueCounter;
-    private int playerDialogueCounter;
+    private static int dialogueCounter;
+    private static int managerDialogueCounter;
+    private static int playerDialogueCounter;
 
     private void Start()
     {
@@ -65,18 +85,51 @@ public class TutorialDialogueController : MonoBehaviour
 
         managerDialogueGO.SetActive(false);
         playerDialogueGO.SetActive(false);
+
+        FadeScreenImage.SetActive(false);
+        fadeScreenImage = FadeScreenImage.GetComponent<Image>();
+        fadeScreenColor = FadeScreenImage.GetComponent<Image>().color;
     }
 
     //DIALOGUE COUNTER FUNCTIONS
-    public void ManagerCounterIncrement()
+    public static void ManagerCounterIncrement()
     {
         managerDialogueCounter++;
         dialogueCounter++;
     }
-    public void PlayerCounterIncrement()
+    public static void PlayerCounterIncrement()
     {
         playerDialogueCounter++;
         dialogueCounter++;
+    }
+
+    private void FadeScreenToBlack()
+    {
+        if(fadeScreenColor.a < 1)
+        {
+            fadeScreenColor = new Color(fadeScreenColor.r, fadeScreenColor.g, fadeScreenColor.b, fadeScreenColor.a + Time.deltaTime);
+            fadeScreenImage.color = fadeScreenColor;
+        }
+        else
+        {
+        dialogueCounter++;
+        BackgroundImage.GetComponent<Animator>().SetInteger("BackgroundCounter", 1);
+
+        }
+        return;
+    }
+
+    private void FadeScreenToClear()
+    {
+        if (fadeScreenColor.a > 0)
+        {
+            fadeScreenColor = new Color(fadeScreenColor.r, fadeScreenColor.g, fadeScreenColor.b, fadeScreenColor.a - Time.deltaTime);
+            fadeScreenImage.color = fadeScreenColor;
+            return;
+        }
+        dialogueCounter++;
+        FadeScreenImage.SetActive(false);
+        return;
     }
 
     private void Update()
@@ -196,9 +249,77 @@ public class TutorialDialogueController : MonoBehaviour
                 case 27:
                     managerDialogueText.text = managerDialogue[managerDialogueCounter];
                     break;
+                case 28:
+                    managerDialogueGO.SetActive(false);
+                    managerGO.SetActive(false);
+                    FadeScreenImage.SetActive(true);
+                    FadeScreenToBlack();
+                    break;
                 default:
                     break;
             }
+        }
+        else
+        {
+            switch(dialogueCounter)
+            {
+                case 28:
+                FadeScreenToBlack();
+                    break;
+                case 29:
+                    FadeScreenToClear();
+                    break;
+                case 30:
+                    IngredientsList[0].SetActive(true);
+                    managerDialogueGO.SetActive(true);
+                    
+                    managerNextButton.SetActive(false);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 31:
+                    IngredientsList[1].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 32:
+                    IngredientsList[2].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 33:
+                    IngredientsList[3].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 34:
+                    IngredientsList[4].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 35:
+                    IngredientsList[5].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 36:
+                    IngredientsList[6].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 37:
+                    IngredientsList[7].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 38:
+                    IngredientsList[8].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 39:
+                    IngredientsList[9].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+                case 40:
+                    IngredientsList[10].SetActive(true);
+                    managerDialogueText.text = managerDialogue[managerDialogueCounter];
+                    break;
+
+            default:
+                    break;
+        }
         }
     }
 }
